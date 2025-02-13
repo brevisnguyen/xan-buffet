@@ -1,7 +1,8 @@
-# Vue 3 + Vite
+# XAN buffet cơm nhà
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+“Là một đứa con trong gia đình Việt, Xan hiểu lắm giá trị của một bữa cơm ngon sau những giờ làm việc, học tập mệt nhoài. Đôi lúc cần gì nhiều đâu, chỉ cơm trắng canh rau, mà như được nạp 1000% năng lượng. Xan cơm nhà - Xan cơm bình dân - có thể chẳng là sơn hào hải vị, nhưng nó có thể là “vị nhà”, là “vị mẹ nấu”, là bữa cơm từ tấm bé theo ta, bình dị - đủ đầy”
 
-## Recommended IDE Setup
+## Team
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+-   Brevis
+-   Ann
