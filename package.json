@@ -1,0 +1,26 @@
+{
+    "name": "xanbuffet",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "node server",
+        "build": "npm run build:client && npm run build:server",
+        "build:client": "vite build --outDir dist/client",
+        "build:server": "vite build --ssr src/entry-server.js --outDir dist/server",
+        "preview": "cross-env NODE_ENV=production node server"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.0.6",
+        "compression": "^1.7.5",
+        "express": "^5.0.1",
+        "sirv": "^3.0.0",
+        "tailwindcss": "^4.0.6",
+        "vue": "^3.5.13"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.1",
+        "cross-env": "^7.0.3",
+        "vite": "^6.0.1"
+    }
+}
