@@ -28,15 +28,19 @@ const more = () => {
 
 <template>
     <div class="cover-photo z-0">
-        <img class="md:hidden mx-auto" src="https://placehold.co/640x360" alt="Cover photo - Xan" />
-        <img class="md:block hidden mx-auto" src="https://placehold.co/1024x370" alt="Cover photo - Xan" />
+        <img
+            class="md:hidden mx-auto aspect-video w-full h-auto object-cover bg-[var(--p-content-background)]"
+            src="/images/xan-cover-169.png"
+            alt="Cover photo - Xan"
+        />
+        <img class="md:block hidden mx-auto w-full h-auto" src="/images/xan-cover-large.png" alt="Cover photo - Xan" />
     </div>
     <div class="px-2 pb-3 md:px-4 bg-[var(--p-content-background)]">
-        <div class="z-10 -mt-16 md:-mt-8 flex flex-col md:flex-row items-start md:items-end">
+        <div class="z-10 md:-mt-8 flex flex-col md:flex-row items-start md:items-end">
             <div class="relative">
                 <img
-                    class="logo aspect-square w-40 md:w-44 rounded-full border-2"
-                    src="https://placehold.co/315x315"
+                    class="logo aspect-square w-40 md:w-44 rounded-full border-2 -mt-16 md:mt-0"
+                    src="/images/xan-logo.jpg"
                     alt="Profile photo - Xan"
                 />
                 <Badge class="absolute bottom-3 right-2 rounded-full" value="24/7" severity="success"></Badge>
