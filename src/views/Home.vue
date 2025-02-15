@@ -1,14 +1,18 @@
 <script setup>
-import { ref } from "vue";
+import { ref, shallowRef } from "vue";
+import About from "./About.vue";
+import Contact from "./Contact.vue";
+import Media from "./Media.vue";
+import Review from "./Review.vue";
 import { useToast } from "primevue/usetoast";
 
 const toast = useToast();
 
-const tabs = ref([
-    { title: "Về Xan", content: "Tab 1 Content", value: "0" },
-    { title: "Địa chỉ", content: "Tab 2 Content", value: "1" },
-    { title: "Hình ảnh", content: "Tab 3 Content", value: "2" },
-    { title: "Review", content: "Tab 3 Content", value: "3" },
+const tabs = shallowRef([
+    { title: "Về Xan", content: About, value: "0" },
+    { title: "Địa chỉ", content: Contact, value: "1" },
+    { title: "Hình ảnh", content: Media, value: "2" },
+    { title: "Review", content: Review, value: "3" },
 ]);
 
 const like = () => {
@@ -47,7 +51,7 @@ const more = () => {
                         <Avatar image="/images/avatar-4.jpg" shape="circle" />
                         <Avatar label="+2" shape="circle" />
                     </AvatarGroup>
-                    <p class="text-[var(--p-surface-400)]">Đã ăn 35 suất</p>
+                    <p class="text-[var(--p-surface-400)]">Đã ăn 35k suất</p>
                 </div>
             </div>
             <div
@@ -79,8 +83,8 @@ const more = () => {
                 <Tab v-for="tab in tabs" :key="tab.title" :value="tab.value">{{ tab.title }}</Tab>
             </TabList>
             <TabPanels>
-                <TabPanel v-for="tab in tabs" :key="tab.content" :value="tab.value">
-                    <p class="m-0">{{ tab.content }}</p>
+                <TabPanel v-for="tab in tabs" :key="tab.value" :value="tab.value">
+                    <component :is="tab.content" />
                 </TabPanel>
             </TabPanels>
         </Tabs>
