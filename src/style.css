@@ -1,7 +1,16 @@
-@import "primeicons/primeicons.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import "tailwindcss";
+@import "primeicons/primeicons.css";
+@import "tailwindcss" important;
 
 @theme {
     --font-roboto: "Roboto", sans-serif;
+}
+
+@layer base {
+    html {
+        @apply text-sm;
+    }
+    .p-splitter {
+        @apply border-none rounded-none;
+    }
 }
