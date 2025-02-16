@@ -33,7 +33,11 @@ const more = () => {
             src="/images/xan-cover-169.png"
             alt="Cover photo - Xan"
         />
-        <img class="md:block hidden mx-auto w-full h-auto" src="/images/xan-cover-large.png" alt="Cover photo - Xan" />
+        <img
+            class="md:block hidden mx-auto w-full h-auto bg-[var(--p-surface-50)]"
+            src="/images/xan-cover-large.png"
+            alt="Cover photo - Xan"
+        />
     </div>
     <div class="px-2 pb-3 md:px-4 bg-[var(--p-content-background)]">
         <div class="z-10 md:-mt-8 flex flex-col md:flex-row items-start md:items-end">
