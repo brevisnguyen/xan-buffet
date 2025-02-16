@@ -40,16 +40,16 @@ const more = () => {
         />
     </div>
     <div class="px-2 pb-3 md:px-4 bg-[var(--p-content-background)]">
-        <div class="z-10 md:-mt-8 flex flex-col md:flex-row items-start md:items-end">
+        <div class="z-10 flex flex-col md:flex-row items-start md:items-end">
             <div class="relative">
                 <img
-                    class="logo aspect-square w-40 md:w-44 rounded-full border-2 -mt-16 md:mt-0"
+                    class="logo aspect-square w-40 md:w-44 rounded-full border-2 -mt-16"
                     src="/images/xan-logo.jpg"
                     alt="Profile photo - Xan"
                 />
                 <Badge class="absolute bottom-3 right-2 rounded-full" value="24/7" severity="success"></Badge>
             </div>
-            <div class="title mt-2 md:mt-9 md:mb-4 md:ml-5 grow">
+            <div class="title mt-2 md:mt-6 md:mb-4 md:ml-5 grow">
                 <span class="font-bold text-2xl md:text-4xl">Xan Buffet Cơm Nhà</span>
                 <div class="mt-2 flex flex-row items-center md:flex-col-reverse md:items-start gap-2">
                     <AvatarGroup>
