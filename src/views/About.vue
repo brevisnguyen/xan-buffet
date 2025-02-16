@@ -3,8 +3,11 @@
 <template>
     <div class="post">
         <div class="avatar flex items-center">
-            <Avatar class="border" image="/images/xan-logo.jpg" shape="circle" />
-            <p class="font-bold ml-2">Xan Buffet Cơm Nhà</p>
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">11h</p>
+            </div>
         </div>
         <div class="content mt-2">
             <p class="indent-4">
