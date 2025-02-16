@@ -13,6 +13,14 @@
         <i class="pi pi-phone mr-3 text-lg"></i>
         <div class="">092.7733.111</div>
     </div>
+    <div class="flex items-center mb-3">
+        <i class="pi pi-facebook mr-3 text-lg"></i>
+        <a href="https://www.facebook.com/share/18kbeBg9CH" target="_blank">Xan - Buffet cơm nhà ăn thả ga</a>
+    </div>
+    <div class="flex items-center mb-3">
+        <i class="pi pi-tiktok mr-3 text-lg"></i>
+        <a href="http://tiktok.com/@xanbuffetcomnha" target="_blank">@xanbuffetcomnha</a>
+    </div>
 
     <div>
         <div class="flex items-center mb-3">
