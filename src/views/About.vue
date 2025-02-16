@@ -52,9 +52,12 @@
             </div>
         </div>
         <div class="content mt-2">
-            <p class="">Chúng tớ Xan đã có biển hiệu rồi, quá ứng ý luôn.</p>
+            <p class="">Xan đã có biển hiệu rồi, quá ứng ý luôn.</p>
             <div class="grid grid-cols-2 grid-rows-2 gap-2 mt-3">
-                <img class="row-span-2 col-span-1 h-full w-auto object-cover" src="/images/2/anh-1.jpg" />
+                <img
+                    class="row-span-2 col-span-1 h-full max-h-[400px] md:max-h-[800px] w-auto object-cover"
+                    src="/images/2/anh-1.jpg"
+                />
                 <img class="aspect-square object-cover" src="/images/2/anh-2.jpg" />
                 <img class="aspect-square object-cover" src="/images/2/anh-3.jpg" />
             </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef } from "vue";
+import { shallowRef } from "vue";
 import About from "./About.vue";
 import Contact from "./Contact.vue";
 import Media from "./Media.vue";
@@ -29,7 +29,7 @@ const more = () => {
 <template>
     <div class="cover-photo z-0">
         <img
-            class="md:hidden mx-auto aspect-video w-full h-auto object-cover bg-[var(--p-content-background)]"
+            class="md:hidden mx-auto aspect-video w-full h-auto object-cover bg-[var(--p-surface-50)]"
             src="/images/xan-cover-169.png"
             alt="Cover photo - Xan"
         />
