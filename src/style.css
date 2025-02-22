@@ -13,4 +13,10 @@
     .p-splitter {
         @apply border-none rounded-none;
     }
+    .p-tabpanels {
+        @apply bg-transparent p-0;
+    }
+    .post {
+        @apply px-2.5 py-3 mb-2 bg-[var(--p-tabs-tabpanel-background)];
+    }
 }
