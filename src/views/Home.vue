@@ -29,7 +29,7 @@ const items = [
         label: "Tiktok",
         icon: "pi pi-tiktok",
         command: () => {
-            window.location.href = "https://www.tiktok.com/@xanbuffetcomnha";
+            window.location.href = "https://www.tiktok.com/@xanbuffetcomnha35k";
         },
     },
     {

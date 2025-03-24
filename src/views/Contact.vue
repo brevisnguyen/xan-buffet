@@ -20,7 +20,7 @@
         </div>
         <div class="flex items-center mb-3">
             <i class="pi pi-tiktok mr-3 text-lg"></i>
-            <a href="http://tiktok.com/@xanbuffetcomnha" target="_blank">@xanbuffetcomnha</a>
+            <a href="https://www.tiktok.com/@xanbuffetcomnha35k" target="_blank">@xanbuffetcomnha</a>
         </div>
 
         <div>

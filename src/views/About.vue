@@ -17,7 +17,27 @@
                 nấu”, là bữa cơm từ tấm bé theo ta, bình dị - đủ đầy”
             </p>
             <iframe
-                src="https://www.tiktok.com/player/v1/7474149955045854482?loop=1&autoplay=1&rel=0&native_context_menu=0"
+                src="https://www.tiktok.com/player/v1/7474149955045854482?loop=1&autoplay=0&rel=0&native_context_menu=0"
+                class="aspect-video w-full h-auto rounded-md"
+                frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+    <div class="post">
+        <div class="avatar flex items-center">
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+            </div>
+        </div>
+        <div class="content mt-2">
+            <p class="indent-4 mb-2.5">
+                Xan có bán mang về nhé ạ, giá vẫn không đổi 35k. Các bạn có thể đặt hàng qua hotline 092.7733.111 hoặc
+                qua các ứng dụng Grab Food, Shopee Food, Bee Food.
+            </p>
+            <iframe
+                src="https://www.tiktok.com/player/v1/7481561236748946696?loop=1&autoplay=0&rel=0&native_context_menu=0"
                 class="aspect-video w-full h-auto rounded-md"
                 frameborder="0"
             ></iframe>
@@ -46,6 +66,26 @@
                 <Image imageClass="aspect-square object-cover" src="/images/m-3.jpg" preview />
                 <Image imageClass="aspect-square object-cover" src="/images/m-4.jpg" preview />
             </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="avatar flex items-center">
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+            </div>
+        </div>
+        <div class="content mt-2">
+            <p class="indent-4 mb-2.5">
+                Menu mới của Xan đây ạ, các bạn xem qua rồi đến thưởng thức thôi nào. Đảm bảo không phí một đồng nào
+                đâu.
+            </p>
+            <iframe
+                src="https://www.tiktok.com/player/v1/7480394733496372498?loop=1&autoplay=0&rel=0&native_context_menu=0"
+                class="aspect-video w-full h-auto rounded-md"
+                frameborder="0"
+            ></iframe>
         </div>
     </div>
     <div class="post">

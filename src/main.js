@@ -1,13 +1,11 @@
-import { createSSRApp } from "vue";
+import { createApp } from "vue";
+import "./style.css";
 import App from "./App.vue";
 import PrimeVue from "primevue/config";
 import { definePreset } from '@primevue/themes';
 import Aura from "@primevue/themes/aura";
 import ToastService from "primevue/toastservice";
 
-// SSR requires a fresh app instance per request, therefore we export a function
-// that creates a fresh app instance. If using Vuex, we'd also be creating a
-// fresh store here.
 const MyPreset = definePreset(Aura, {
     semantic: {
         primary: {
@@ -26,13 +24,11 @@ const MyPreset = definePreset(Aura, {
     }
 });
 
-export function createApp() {
-    const app = createSSRApp(App);
-    app.use(PrimeVue, {
-        theme: {
-            preset: MyPreset,
-        },
-    });
-    app.use(ToastService);
-    return { app };
-}
+const app = createApp(App);
+app.use(PrimeVue, {
+    theme: {
+        preset: MyPreset,
+    },
+});
+app.use(ToastService);
+app.mount("#app");
