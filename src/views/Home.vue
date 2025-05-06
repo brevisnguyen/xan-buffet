@@ -102,7 +102,7 @@ const isMobile = () => {
                 </div>
             </div>
             <div
-                class="action-btn md:mb-4 mt-4 md:mt-0 w-full md:w-fit grid grid-cols-7 gap-x-3 md:flex md:justify-end"
+                class="action-btn md:mb-4 mt-4 md:mt-0 w-full md:w-fit grid grid-cols-9 gap-x-3 md:flex md:justify-end"
             >
                 <Button
                     @click="like()"
@@ -110,22 +110,26 @@ const isMobile = () => {
                     severity="primary"
                     icon="pi pi-thumbs-up-fill"
                     badge="35k"
+                    size="small"
                     variant="outlined"
                     class="fb-like mr-0 md:mr-4 col-span-3"
                 />
                 <SplitButton
                     @click="message()"
                     :model="items"
-                    class="col-start-4 col-span-3"
+                    class="col-start-4 col-span-3 mr-0 md:mr-4"
                     label="Nhắn tin"
                     severity="info"
+                    size="small"
                     icon="pi pi-whatsapp"
                 />
                 <Button
-                    @click="activatedTab = 1"
-                    class="md:hidden flex-none"
-                    severity="secondary"
-                    icon="pi pi-directions"
+                    @click="order()"
+                    class="col-span-3"
+                    severity="success"
+                    size="small"
+                    label="Đặt hàng"
+                    icon="pi pi-shopping-cart"
                 />
             </div>
         </div>

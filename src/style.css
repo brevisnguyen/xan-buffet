@@ -19,4 +19,7 @@
     .post {
         @apply px-2.5 py-3 mb-2 bg-[var(--p-tabs-tabpanel-background)];
     }
+    .router-link-exact-active {
+        @apply text-sky-500 font-semibold;
+    }
 }
