@@ -5,7 +5,9 @@ import Contact from "./Contact.vue";
 import Media from "./Media.vue";
 import Review from "./Review.vue";
 import { useToast } from "primevue/usetoast";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const toast = useToast();
 
 const tabs = shallowRef([
@@ -124,7 +126,7 @@ const isMobile = () => {
                     icon="pi pi-whatsapp"
                 />
                 <Button
-                    @click="order()"
+                    @click="router.push('/order')"
                     class="col-span-3"
                     severity="success"
                     size="small"

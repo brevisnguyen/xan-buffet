@@ -1,17 +1,18 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 </script>
 
 <template>
-    <header class="sticky top-0 w-full bg-[var(--p-content-background)] shadow-md z-50">
-        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-            <RouterLink to="/" class="text-xl font-bold">
-                <img class="w-16 h-10 md:w-24 md:h-12 object-cover" src="/images/xan-logo.jpg" />
-            </RouterLink>
-            <nav class="flex space-x-4">
-                <RouterLink to="/" class="" exact> Home </RouterLink>
-                <RouterLink to="/order" class=""> Order </RouterLink>
-            </nav>
+    <header class="top-0 w-full bg-[var(--p-content-background)] z-50">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="rounded-3xl">
+                <img
+                    class="mx-auto w-full h-36 md:h-48 rounded-3xl object-cover bg-[var(--p-surface-50)]"
+                    src="/images/xan-cover-large.png"
+                />
+            </div>
         </div>
     </header>
 </template>

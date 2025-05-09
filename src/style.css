@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "primeicons/primeicons.css";
 @import "tailwindcss" important;
+@import "tailwindcss-primeui";
 
 @theme {
     --font-roboto: "Roboto", sans-serif;
