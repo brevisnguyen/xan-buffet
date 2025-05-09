@@ -23,4 +23,13 @@
     .router-link-exact-active {
         @apply text-sky-500 font-semibold;
     }
+    .p-steppanels {
+        @apply pb-16;
+    }
+    .p-steppanel {
+        @apply bg-transparent;
+    }
+    .p-card-body {
+        @apply h-full;
+    }
 }

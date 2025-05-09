@@ -1,0 +1,485 @@
+{
+    "1": {
+        "title": "Thứ 2",
+        "items": [
+            {
+                "title": "Heo om cà tím",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào xả ớt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi bò",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá om dưa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào đỗ giá",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Vịt hấp xì dầu",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cà ri gà",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn rim tiêu",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu sốt cà chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng rim",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Thịt băm rau củ",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Chả lá lốt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Nộm dưa chuột",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Su su xào",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cải bắp xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    },
+    "2": {
+        "title": "Thứ 3",
+        "items": [
+            {
+                "title": "Heo đảo chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò om dưa chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào ớt chuông",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá kho tiêu riềng",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào giá dứa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi vịt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gà chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn nấu khoai tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu tẩm hành",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng đảo hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá mắm rim chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Xúc xích bơ bắp",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Lạc rang",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Rau cần xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    },
+    "3": {
+        "title": "Thứ 4",
+        "items": [
+            {
+                "title": "Heo xào mướp hương",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào nấm",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò om dưa chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào ớt chuông",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá kho tiêu riềng",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào giá dứa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi vịt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gà chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn nấu khoai tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu tẩm hành",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng đảo hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá mắm rim chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Xúc xích bơ bắp",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Lạc rang",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Rau cần xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    },
+    "4": {
+        "title": "Thứ 5",
+        "items": [
+            {
+                "title": "Heo xào mướp hương",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào nấm",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò om dưa chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào ớt chuông",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá kho tiêu riềng",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào giá dứa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi vịt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gà chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn nấu khoai tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu tẩm hành",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng đảo hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá mắm rim chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Xúc xích bơ bắp",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Lạc rang",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Rau cần xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    },
+    "5": {
+        "title": "Thứ 6",
+        "items": [
+            {
+                "title": "Heo xào mướp hương",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào nấm",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò om dưa chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào ớt chuông",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá kho tiêu riềng",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào giá dứa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi vịt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gà chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn nấu khoai tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu tẩm hành",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng đảo hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá mắm rim chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Xúc xích bơ bắp",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Lạc rang",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Rau cần xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    },
+    "6": {
+        "title": "Thứ 7",
+        "items": [
+            {
+                "title": "Heo xào mướp hương",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào nấm",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò om dưa chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào ớt chuông",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá kho tiêu riềng",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào giá dứa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi vịt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gà chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn nấu khoai tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu tẩm hành",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng đảo hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá mắm rim chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Xúc xích bơ bắp",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Lạc rang",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Rau cần xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    },
+    "0": {
+        "title": "Chủ nhật",
+        "items": [
+            {
+                "title": "Heo xào mướp hương",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Heo xào nấm",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò om dưa chua",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Bò xào ớt chuông",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá kho tiêu riềng",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Tim xào giá dứa",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gỏi vịt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Gà chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Sườn nấu khoai tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Đậu tẩm hành",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Trứng đảo hành tây",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Cá mắm rim chua ngọt",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Xúc xích bơ bắp",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Kim chi",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Lạc rang",
+                "image": "images/menu/m-1.jpg"
+            },
+            {
+                "title": "Rau cần xào",
+                "image": "images/menu/m-1.jpg"
+            }
+        ]
+    }
+}
