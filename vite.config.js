@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import Components from "unplugin-vue-components/vite";
 import { PrimeVueResolver } from "@primevue/auto-import-resolver";
+import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,4 +14,9 @@ export default defineConfig({
             resolvers: [PrimeVueResolver()],
         }),
     ],
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "./src"), // ← Đảm bảo dòng này tồn tại
+        },
+    },
 });

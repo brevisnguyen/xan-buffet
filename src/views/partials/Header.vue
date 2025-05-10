@@ -7,7 +7,7 @@ const router = useRouter();
 <template>
     <header class="top-0 w-full bg-[var(--p-content-background)] z-50">
         <div class="max-w-7xl mx-auto relative">
-            <div class="rounded-3xl">
+            <div class="rounded-3xl px-2 md:px-0">
                 <img
                     class="mx-auto w-full h-36 md:h-48 rounded-3xl object-cover bg-[var(--p-surface-50)]"
                     src="/images/xan-cover-large.png"
