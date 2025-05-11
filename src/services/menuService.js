@@ -1,13 +1,11 @@
 import axios from "axios";
 
-const apiClient = axios.create({
-    baseURL: "http://xanbuffet.test/api",
-});
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default {
     async getMenuByDay(day) {
         try {
-            const response = await apiClient.get(`/menu/${day}`);
+            const response = await axios.get(`${API_BASE_URL}/menu/${day}`);
             return response.data;
         } catch (error) {
             console.error("Lỗi khi lấy menu của:", day, error);
@@ -17,7 +15,7 @@ export default {
 
     async getAllMenus() {
         try {
-            const response = await apiClient.get("/menu");
+            const response = await axios.get(`${API_BASE_URL}/menu`);
             return response.data;
         } catch (error) {
             console.error("Lỗi khi lấy menu:", error);

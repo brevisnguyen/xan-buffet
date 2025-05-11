@@ -2,14 +2,16 @@
 import { ref, onMounted } from "vue";
 import Header from "./partials/Header.vue";
 import menuService from "@/services/menuService";
+import { createOrder, getOrderStatus } from "@/services/orderService";
 import { useToast } from "primevue/usetoast";
 
 const toast = useToast();
 const menu = ref(null);
 const loading = ref(true);
 const error = ref(null);
-const activeStep = ref(2);
+const activeStep = ref(1);
 const order = ref({
+    id: null,
     name: "",
     phone: "",
     address: "",
@@ -36,6 +38,45 @@ onMounted(async () => {
     }
 });
 
+const currTime = () => {
+    const date = new Date();
+
+    const hour = date.getHours().toString().padStart(2, "0");
+    const minute = date.getMinutes().toString().padStart(2, "0");
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear().toString().slice(-2);
+
+    return `${hour}:${minute}, ${day}/${month}/${year}`;
+};
+const onCopy = (text) => {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+            toast.add({
+                severity: "success",
+                summary: "Sao chép thành công",
+                detail: "Mã đơn hàng đã được sao chép vào clipboard.",
+                life: 3000,
+            });
+        });
+    } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = orderId;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        toast.add({
+            severity: "success",
+            summary: "Sao chép thành công",
+            detail: "Mã đơn hàng đã được sao chép vào clipboard.",
+            life: 3000,
+        });
+        document.body.removeChild(textarea);
+    }
+};
 const activateCallback = (step) => {
     if (step === 2) {
         if (order.value.dishes.length < 6) {
@@ -57,6 +98,9 @@ const activateCallback = (step) => {
             });
             return;
         }
+    } else if (step > 3) {
+        onOrderSubmit();
+        return;
     }
     activeStep.value = step;
 };
@@ -77,6 +121,26 @@ const onSelectDish = (dish) => {
         order.value.dishes.push(dish);
     }
     dish.selected = !dish.selected;
+};
+const onOrderSubmit = async () => {
+    loading.value = true;
+    try {
+        const payload = {
+            ...order.value,
+            dishes: order.value.dishes.map((d) => d.id),
+        };
+        const response = await createOrder(payload);
+        order.value.id = response.orderId;
+        toast.add({
+            severity: "success",
+            summary: "Đặt hàng thành công",
+            detail: "Quý khách đã đặt hàng thành công. Mã đơn hàng của quý khách là: " + order.value.id,
+            life: 3000,
+        });
+        loading.value = false;
+    } catch (err) {
+        console.error(err);
+    }
 };
 </script>
 
@@ -173,7 +237,7 @@ const onSelectDish = (dish) => {
                                         <img :src="dish.image" />
                                     </template>
                                     <template #title>
-                                        <div class="min-h-20">{{ dish.name }}</div>
+                                        <div class="min-h-20 text-lg">{{ dish.name }}</div>
                                     </template>
                                     <template #footer>
                                         <Button
@@ -197,7 +261,7 @@ const onSelectDish = (dish) => {
                         <div class="flex flex-col gap-4 w-full md:max-w-xl mx-auto">
                             <Message size="small" severity="error" v-if="error"> {{ error }} </Message>
                             <div class="flex flex-col gap-2">
-                                <label for="name">Họ và tên</label>
+                                <label for="name">Họ và tên&nbsp;<span class="italic text-xs">(bắt buộc)</span></label>
                                 <InputText
                                     id="name"
                                     v-model="order.name"
@@ -206,7 +270,7 @@ const onSelectDish = (dish) => {
                                 />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="phone">Địa chỉ</label>
+                                <label for="phone">SĐT&nbsp;<span class="italic text-xs">(bắt buộc)</span></label>
                                 <InputText
                                     id="phone"
                                     v-model="order.phone"
@@ -215,7 +279,7 @@ const onSelectDish = (dish) => {
                                 />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="address">Địa chỉ</label>
+                                <label for="address">Địa chỉ&nbsp;<span class="italic text-xs">(bắt buộc)</span></label>
                                 <InputText id="name" v-model="order.address" placeholder="Địa chỉ nhận hàng" />
                             </div>
                             <div class="flex flex-col gap-2">
@@ -230,11 +294,55 @@ const onSelectDish = (dish) => {
                         <Message size="small" severity="info" closable>
                             Một bước nữa thôi, mời quý khách xem lại thông tin đơn hàng và ấn xác nhận.
                         </Message>
-                        <div class="text-center my-2 md:my-4 text-xl font-semibold">Xác nhận</div>
+                        <div class="text-center my-2 md:my-4 text-xl font-semibold">Thông tin đơn hàng</div>
                         <div class="flex flex-col gap-y-1 w-full mx-auto">
-                            <p>Người nhận:&nbsp;{{ order.name }}</p>
-                            <p>SĐT:&nbsp;{{ order.phone }}</p>
-                            <p>Địa chỉ:&nbsp;{{ order.address }}</p>
+                            <div
+                                class="flex border border-[var(--p-content-border-color)] rounded-md bg-[var(--p-content-background)]"
+                            >
+                                <div class="p-2 w-6/12 text-sm md:text-base">
+                                    <div class="flex flex-col gap-2">
+                                        <p class="font-semibold">Đơn hàng</p>
+                                        <div class="grid grid-cols-2 gap-1 text-xs md:text-sm items-center">
+                                            <p>Order #:</p>
+                                            <div class="flex items-center justify-between md:justify-start">
+                                                <p>{{ order.id }}</p>
+                                                <Button
+                                                    icon="pi pi-copy"
+                                                    size="small"
+                                                    variant="text"
+                                                    rounded
+                                                    @click="onCopy('XanOrderNo:' + order.id)"
+                                                />
+                                            </div>
+                                            <p>Thời gian:</p>
+                                            <p>{{ currTime() }}</p>
+                                            <p>Thành tiền:</p>
+                                            <p>35k + phí ship</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Divider layout="vertical" />
+                                <div class="p-2 w-6/12 text-sm md:text-base">
+                                    <div class="flex flex-col gap-1 md:gap-2">
+                                        <p class="font-semibold">Người nhận</p>
+                                        <div class="flex flex-col text-sm">
+                                            <p>{{ order.name }}</p>
+                                            <p>{{ order.phone }}</p>
+                                            <p>{{ order.address }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex flex-col">
+                                <h4 class="font-semibold text-sm md:text-base mb-3">Món ăn</h4>
+                                <div
+                                    v-for="dish in order.dishes"
+                                    class="border-b border-[var(--p-content-border-color)] py-2 flex gap-x-3 md:gap-x-6"
+                                >
+                                    <img :src="dish.image" :alt="dish.name" class="w-44 md:w-40 object-cover" />
+                                    <h4 class="font-bold text-base text-wrap">{{ dish.name }}</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </StepPanel>
@@ -263,6 +371,7 @@ const onSelectDish = (dish) => {
                 :icon="activeStep < 3 ? 'pi pi-arrow-right' : 'pi pi-check'"
                 iconPos="right"
                 size="small"
+                :disabled="loading"
                 @click="activateCallback(activeStep + 1)"
             />
         </div>
