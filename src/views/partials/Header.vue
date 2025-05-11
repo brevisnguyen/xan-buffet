@@ -13,6 +13,16 @@ const router = useRouter();
                     src="/images/xan-cover-large.png"
                 />
             </div>
+            <div class="absolute inset-x-0 -bottom-4 md:-bottom-7 flex items-center justify-center">
+                <Button asChild v-slot="slotProps">
+                    <RouterLink to="/" :class="slotProps.class">
+                        <div class="flex flex-col gap-2 items-center justify-center">
+                            <i class="pi pi-home"></i>
+                            <p class="text-sm hidden md:block">Trang chủ</p>
+                        </div>
+                    </RouterLink>
+                </Button>
+            </div>
         </div>
     </header>
 </template>

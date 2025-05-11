@@ -10,12 +10,14 @@ const menu = ref(null);
 const loading = ref(true);
 const error = ref(null);
 const activeStep = ref(1);
+const isOrderConfirmed = ref(false);
 const order = ref({
     id: null,
     name: "",
     phone: "",
     address: "",
     note: "",
+    status: "pending",
     dishes: [],
 });
 
@@ -130,24 +132,41 @@ const onOrderSubmit = async () => {
             dishes: order.value.dishes.map((d) => d.id),
         };
         const response = await createOrder(payload);
-        order.value.id = response.orderId;
+        if (response.success) {
+            order.value.id = response.orderId;
+            isOrderConfirmed.value = true;
+            localStorage.setItem("newestOrderId", response.orderId);
+            toast.add({
+                severity: "success",
+                summary: "Đặt hàng thành công",
+                detail: "Quý khách đã đặt hàng thành công. Mã đơn hàng của quý khách là: " + order.value.id,
+                life: 3000,
+            });
+        } else {
+            toast.add({
+                severity: "error",
+                summary: "Đặt hàng không thành công",
+                detail: response.message,
+                life: 3000,
+            });
+        }
+    } catch (err) {
         toast.add({
-            severity: "success",
-            summary: "Đặt hàng thành công",
-            detail: "Quý khách đã đặt hàng thành công. Mã đơn hàng của quý khách là: " + order.value.id,
+            severity: "error",
+            summary: "Đặt hàng không thành công",
+            detail: "Vui lòng thử lại sau.",
             life: 3000,
         });
         loading.value = false;
-    } catch (err) {
-        console.error(err);
+        return;
     }
 };
 </script>
 
 <template>
     <Header />
-    <div class="">
-        <Stepper v-model:value="activeStep" linear class="px-2 md:px-4 mt-3">
+    <div class="mb-4 mt-10 md:mt-14 md:mb-8">
+        <Stepper v-model:value="activeStep" linear class="px-2 md:px-4">
             <StepList>
                 <Step v-slot="{ activateCallback, value, a11yAttrs }" asChild :value="1">
                     <div class="flex flex-row flex-auto gap-2" v-bind="a11yAttrs.root">
@@ -318,6 +337,8 @@ const onOrderSubmit = async () => {
                                             <p>{{ currTime() }}</p>
                                             <p>Thành tiền:</p>
                                             <p>35k + phí ship</p>
+                                            <p>Trạng thái:</p>
+                                            <p>{{ order.status }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -348,6 +369,33 @@ const onOrderSubmit = async () => {
                 </StepPanel>
             </StepPanels>
         </Stepper>
+        <Dialog v-model:visible="isOrderConfirmed" modal :closable="false" class="w-full max-w-sm md:max-w-lg">
+            <template #header>
+                <div class="inline-flex items-center gap-2">
+                    <Avatar image="/images/xan-logo.jpg" shape="circle" />
+                    <span class="font-bold whitespace-nowrap">Đặt hàng thành công</span>
+                </div>
+            </template>
+            <div class="flex flex-col gap-2">
+                <h3>
+                    ✅ Đơn hàng đang được chuẩn bị giao. Phí ship sẽ được XAN thông báo qua SĐT của quý khách. Mã đơn
+                    hàng của quý khách là: {{ order.id }} <br />👉 Ấn vào mã đơn hàng bên trên để sao chép nhanh. Quý
+                    khách vui lòng nhấn vào nút "Đơn hàng của tôi" xem trạng thái đơn. <br />👉Nếu có bất kỳ thắc mắc
+                    nào, xin vui lòng liên hệ bộ phận chăm sóc khách hàng. Xin cảm ơn!
+                </h3>
+                <Button variant="outlined" severity="contrast" size="small" @click="onCopy(order.id)">
+                    Mã đơn hàng: {{ order.id }}
+                </Button>
+            </div>
+            <template #footer>
+                <Button asChild v-slot="slotProps" variant="link">
+                    <RouterLink to="/" :class="slotProps.class">Về trang chủ</RouterLink>
+                </Button>
+                <Button asChild v-slot="slotProps" size="small">
+                    <RouterLink to="/status" :class="slotProps.class">Đơn hàng của tôi</RouterLink>
+                </Button>
+            </template>
+        </Dialog>
         <div
             :class="[
                 'fixed flex bottom-0 w-full max-w-5xl shadow-2xl border-t border-[var(--p-content-border-color)] bg-[var(--p-content-background)] px-2 py-3 z-50',
