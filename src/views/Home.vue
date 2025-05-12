@@ -48,7 +48,8 @@ const like = () => {
     window.open("https://www.facebook.com/share/18kbeBg9CH", "_blank");
 };
 const message = () => {
-    window.open("https://m.me/xanbuffet");
+    if (isMobile()) window.location.href = "https://zalo.me/0927733111";
+    else window.location.href = "https://chat.zalo.me/?phone=0927733111";
 };
 
 const isMobile = () => {
