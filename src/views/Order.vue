@@ -81,11 +81,11 @@ const onCopy = (text) => {
 };
 const activateCallback = (step) => {
     if (step === 2) {
-        if (order.value.dishes.length < 6) {
+        if (order.value.dishes.length < 3) {
             toast.add({
                 severity: "warn",
                 summary: "Chưa chọn đủ món",
-                detail: "Quý khách vui lòng chọn tối thiểu 6 món.",
+                detail: "Quý khách vui lòng chọn tối thiểu 3 món.",
                 life: 3000,
             });
             return;
