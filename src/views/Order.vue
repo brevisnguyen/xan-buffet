@@ -242,10 +242,7 @@ const onOrderSubmit = async () => {
                             Nếu có yêu cầu đặc biệt, vui lòng ghi chú trong phần ghi chú.
                         </Message>
                         <div class="text-center my-2 md:my-4 text-xl font-semibold">Chọn món</div>
-                        <div v-if="loading" class="loading">
-                            Đang tải dữ liệu thực đơn...
-                            <span class="animate-spin">🌀</span>
-                        </div>
+                        <div v-if="loading">Đang tải dữ liệu thực đơn...</div>
                         <div v-else-if="error" class="error">
                             {{ error }}
                         </div>
@@ -346,10 +343,23 @@ const onOrderSubmit = async () => {
                                 <div class="p-2 w-6/12 text-sm md:text-base">
                                     <div class="flex flex-col gap-1 md:gap-2">
                                         <p class="font-semibold">Người nhận</p>
-                                        <div class="flex flex-col text-sm">
-                                            <p>{{ order.name }}</p>
-                                            <p>{{ order.phone }}</p>
-                                            <p>{{ order.address }}</p>
+                                        <div class="flex flex-col text-sm gap-1 md:gap-2">
+                                            <p>
+                                                <i class="pi pi-user text-xs md:text-sm mr-1 md:mr-3"></i
+                                                >{{ order.name }}
+                                            </p>
+                                            <p>
+                                                <i class="pi pi-phone text-xs md:text-sm mr-1 md:mr-3"></i
+                                                >{{ order.phone }}
+                                            </p>
+                                            <p>
+                                                <i class="pi pi-map-marker text-xs md:text-sm mr-1 md:mr-3"></i
+                                                >{{ order.address }}
+                                            </p>
+                                            <p>
+                                                <i class="pi pi-pen-to-square text-xs md:text-sm mr-1 md:mr-3"></i>
+                                                {{ order.note }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -379,7 +389,7 @@ const onOrderSubmit = async () => {
             <div class="flex flex-col gap-2">
                 <h3>
                     ✅ Đơn hàng đang được chuẩn bị giao. Phí ship sẽ được XAN thông báo qua SĐT của quý khách. Mã đơn
-                    hàng của quý khách là: {{ order.id }} <br />👉 Ấn vào mã đơn hàng bên trên để sao chép nhanh. Quý
+                    hàng của quý khách là: {{ order.id }} <br />👉 Ấn vào mã đơn hàng bên dưới để sao chép nhanh. Quý
                     khách vui lòng nhấn vào nút "Đơn hàng của tôi" xem trạng thái đơn. <br />👉Nếu có bất kỳ thắc mắc
                     nào, xin vui lòng liên hệ bộ phận chăm sóc khách hàng. Xin cảm ơn!
                 </h3>

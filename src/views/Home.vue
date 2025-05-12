@@ -92,7 +92,7 @@ const isMobile = () => {
                 <Badge class="absolute bottom-3 right-2 rounded-full" value="24/7" severity="success"></Badge>
             </div>
             <div class="title mt-2 md:mt-6 md:mb-4 md:ml-5 grow">
-                <span class="font-bold text-2xl md:text-4xl">Xan Buffet Cơm Nhà</span>
+                <span class="font-bold text-2xl md:text-4xl text-nowrap">Xan Buffet Cơm Nhà</span>
                 <div class="mt-2 flex flex-row items-center md:flex-col-reverse md:items-start gap-2">
                     <AvatarGroup>
                         <Avatar image="/images/avatar-1.jpg" shape="circle" />
@@ -104,7 +104,7 @@ const isMobile = () => {
                 </div>
             </div>
             <div
-                class="action-btn md:mb-4 mt-4 md:mt-0 w-full md:w-fit grid grid-cols-9 gap-x-3 md:flex md:justify-end"
+                class="action-btn md:mb-4 mt-4 md:mt-0 w-full md:w-fit grid grid-cols-9 gap-x-2.5 md:flex md:justify-end"
             >
                 <Button
                     @click="like()"

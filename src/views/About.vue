@@ -52,6 +52,79 @@
             </div>
         </div>
         <div class="content mt-2">
+            <p class="indent-4 mb-2.5">
+                Em thích ăn cơm nhà Xan #buffetcomnha #buffet #comnhamotgia #35k #Xan #comnha #anthaga #combinhdan
+                #xanbuffetcomnha
+            </p>
+            <iframe
+                src="https://www.tiktok.com/player/v1/7501550023134514439?loop=1&autoplay=0&rel=0&native_context_menu=0"
+                class="aspect-video w-full h-auto rounded-md"
+                frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+    <div class="post">
+        <div class="avatar flex items-center">
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+            </div>
+        </div>
+        <div class="content mt-2">
+            <p class="indent-4 mb-2.5">Gần mực thì đen Gần Xan thì tiết kiệmmmmm</p>
+            <iframe
+                src="https://www.tiktok.com/player/v1/7501548314383404306?loop=1&autoplay=0&rel=0&native_context_menu=0"
+                class="aspect-video w-full h-auto rounded-md"
+                frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+    <div class="post">
+        <div class="avatar flex items-center">
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+            </div>
+        </div>
+        <div class="content mt-2">
+            <p class="indent-4 mb-2.5">
+                Menu Xan thứ 2 hàng tuần #xanbuffetcomnha #buffet #combinhdan #buffetcomnha #anthaga
+            </p>
+            <iframe
+                src="https://www.tiktok.com/player/v1/7493008985306500370?loop=1&autoplay=0&rel=0&native_context_menu=0"
+                class="aspect-video w-full h-auto rounded-md"
+                frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+    <div class="post">
+        <div class="avatar flex items-center">
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+            </div>
+        </div>
+        <div class="content mt-2">
+            <p class="indent-4 mb-2.5">Menu Xan thứ 3 #xanbuffetcomnha #buffet #combinhdan #buffetcomnha #anthaga</p>
+            <iframe
+                src="https://www.tiktok.com/player/v1/7493379278583713032?loop=1&autoplay=0&rel=0&native_context_menu=0"
+                class="aspect-video w-full h-auto rounded-md"
+                frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+    <div class="post">
+        <div class="avatar flex items-center">
+            <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
+            <div class="ml-3">
+                <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
+                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+            </div>
+        </div>
+        <div class="content mt-2">
             <p class="pl-2">
                 Có gì trong buffet cơm nhà 35K?<br />
                 🩵 Quầy line 16 món nóng<br />

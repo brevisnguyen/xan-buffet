@@ -18,7 +18,6 @@ const onSearch = async () => {
         const response = await getOrderStatus(orderId.value);
         if (response.success) {
             order.value = response.order;
-            localStorage.setItem("orderInfo", JSON.stringify(order));
         } else {
             error.value = response.message;
         }
@@ -83,13 +82,13 @@ onMounted(async () => {
                 <div class="pl-2 md:pl-4 py-2 w-6/12 text-sm md:text-base">
                     <div class="flex flex-col gap-2 text-left">
                         <p class="font-semibold">Đơn hàng</p>
-                        <div class="grid grid-cols-2 gap-1 text-xs md:text-sm items-center">
+                        <div class="grid grid-cols-2 gap-1 md:gap-2 text-xs md:text-sm items-center">
                             <p>Order #:</p>
                             <p>{{ order.id }}</p>
                             <p>Thời gian:</p>
                             <p>{{ formatTime(order.created_at) }}</p>
                             <p>Thành tiền:</p>
-                            <p>{{ order.total }}</p>
+                            <p>{{ order.total }} <span class="italic">(có thể gồm phí ship)</span></p>
                             <p>Trạng thái:</p>
                             <Message severity="info" size="small" variant="simple">
                                 {{ formatStatus(order.status) }}
@@ -101,10 +100,11 @@ onMounted(async () => {
                 <div class="pr-2 md:pr-4 py-2 w-6/12 text-sm md:text-base text-left">
                     <div class="flex flex-col gap-1 md:gap-2">
                         <p class="font-semibold">Người nhận</p>
-                        <div class="flex flex-col gap-1 text-sm">
-                            <p>{{ order.name }}</p>
-                            <p>{{ order.phone }}</p>
-                            <p>{{ order.address }}</p>
+                        <div class="flex flex-col text-sm gap-1 md:gap-2">
+                            <p><i class="pi pi-user text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.name }}</p>
+                            <p><i class="pi pi-phone text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.phone }}</p>
+                            <p><i class="pi pi-map-marker text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.address }}</p>
+                            <p><i class="pi pi-pen-to-square text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.note }}</p>
                         </div>
                     </div>
                 </div>
