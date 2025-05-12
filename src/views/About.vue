@@ -6,7 +6,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -28,7 +28,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -48,7 +48,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -68,7 +68,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -85,7 +85,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -104,7 +104,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -121,7 +121,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -146,7 +146,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -166,7 +166,7 @@
             <Avatar size="large" class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-2">
@@ -186,7 +186,7 @@
             <Avatar class="border" image="/images/xan-logo.jpg" shape="circle" />
             <div class="ml-3">
                 <h2 class="font-bold">Xan Buffet Cơm Nhà</h2>
-                <p class="text-xs">35k ăn thả ga không giới hạn</p>
+                <p class="text-sm">35k ăn thả ga không giới hạn</p>
             </div>
         </div>
         <div class="content mt-4">

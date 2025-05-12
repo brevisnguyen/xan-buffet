@@ -21,10 +21,17 @@ const items = ref([
     },
     {
         label: "Liên hệ CSKH",
-        icon: "pi pi-question",
+        icon: "pi pi-whatsapp",
         command: () => {
             if (isMobile()) window.location.href = "https://zalo.me/0927733111";
             else window.location.href = "https://chat.zalo.me/?phone=0927733111";
+        },
+    },
+    {
+        label: "Trang chủ",
+        icon: "pi pi-home",
+        command: () => {
+            router.push("/");
         },
     },
 ]);
@@ -54,8 +61,7 @@ const isMobile = () => {
             direction="up"
             :buttonProps="{ severity: 'warn', rounded: true }"
             :tooltipOptions="{ position: 'left' }"
-            style="position: fixed; top: calc(50% - 10rem)"
-            class="right-2 md:right-6"
+            style="position: fixed; top: calc(50% - 10rem); right: 14px"
         >
         </SpeedDial>
     </div>

@@ -18,7 +18,7 @@ const router = useRouter();
                     <RouterLink to="/" :class="slotProps.class">
                         <div class="flex flex-col gap-2 items-center justify-center">
                             <i class="pi pi-home"></i>
-                            <p class="text-sm hidden md:block">Trang chủ</p>
+                            <p class="hidden md:block">Trang chủ</p>
                         </div>
                     </RouterLink>
                 </Button>

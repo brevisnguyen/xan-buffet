@@ -20,10 +20,10 @@
         </div>
         <div class="flex items-center mb-3">
             <i class="pi pi-tiktok mr-3 text-lg"></i>
-            <a href="https://www.tiktok.com/@xanbuffetcomnha35k" target="_blank">@xanbuffetcomnha</a>
+            <a href="https://www.tiktok.com/@xanbuffetcomnha35k" target="_blank">@xanbuffetcomnha35k</a>
         </div>
 
-        <div>
+        <div class="pb-5">
             <div class="flex items-center mb-3">
                 <i class="pi pi-map mr-3 text-lg"></i>
                 <div class="">Bản đồ</div>

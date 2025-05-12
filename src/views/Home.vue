@@ -113,7 +113,6 @@ const isMobile = () => {
                     severity="primary"
                     icon="pi pi-thumbs-up-fill"
                     badge="35k"
-                    size="small"
                     variant="outlined"
                     class="fb-like mr-0 md:mr-4 col-span-3"
                 />
@@ -123,14 +122,12 @@ const isMobile = () => {
                     class="col-start-4 col-span-3 mr-0 md:mr-4"
                     label="Nhắn tin"
                     severity="info"
-                    size="small"
                     icon="pi pi-whatsapp"
                 />
                 <Button
                     @click="router.push('/order')"
                     class="col-span-3"
                     severity="success"
-                    size="small"
                     label="Đặt hàng"
                     icon="pi pi-shopping-cart"
                 />

@@ -68,6 +68,7 @@ onMounted(async () => {
 <template>
     <Header />
     <div class="mb-4 mt-10 md:mt-14 md:mb-8 px-2.5 md:px-4 w-full md:w-md mx-auto">
+        <h3 class="text-xl font-bold text-center mb-3 md:mb-6">Kiểm tra đơn hàng</h3>
         <InputGroup>
             <InputText v-model="orderId" placeholder="Nhập vào mã đơn hàng của bạn" />
             <Button label="Tìm kiếm" icon="pi pi-search" @click="onSearch"></Button>
@@ -79,10 +80,10 @@ onMounted(async () => {
         <Message v-else-if="error" severity="error">{{ error }}</Message>
         <div v-else class="pb-8">
             <div class="flex border border-[var(--p-content-border-color)] rounded-md bg-[var(--p-content-background)]">
-                <div class="pl-2 md:pl-4 py-2 w-6/12 text-sm md:text-base">
+                <div class="pl-2 md:pl-4 py-2 w-6/12 md:text-base">
                     <div class="flex flex-col gap-2 text-left">
                         <p class="font-semibold">Đơn hàng</p>
-                        <div class="grid grid-cols-2 gap-1 md:gap-2 text-xs md:text-sm items-center">
+                        <div class="grid grid-cols-2 gap-1 md:gap-2 items-baseline">
                             <p>Order #:</p>
                             <p>{{ order.id }}</p>
                             <p>Thời gian:</p>
@@ -97,14 +98,17 @@ onMounted(async () => {
                     </div>
                 </div>
                 <Divider layout="vertical" />
-                <div class="pr-2 md:pr-4 py-2 w-6/12 text-sm md:text-base text-left">
-                    <div class="flex flex-col gap-1 md:gap-2">
+                <div class="pr-2 md:pr-4 py-2 w-6/12 md:text-base">
+                    <div class="flex flex-col gap-2 text-left">
                         <p class="font-semibold">Người nhận</p>
-                        <div class="flex flex-col text-sm gap-1 md:gap-2">
-                            <p><i class="pi pi-user text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.name }}</p>
-                            <p><i class="pi pi-phone text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.phone }}</p>
-                            <p><i class="pi pi-map-marker text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.address }}</p>
-                            <p><i class="pi pi-pen-to-square text-xs md:text-sm mr-1 md:mr-3"></i>{{ order.note }}</p>
+                        <div class="flex flex-col gap-2">
+                            <p><i class="pi pi-user mr-2 md:mr-3"></i>{{ order.name }}</p>
+                            <p><i class="pi pi-phone mr-2 md:mr-3"></i>{{ order.phone }}</p>
+                            <p><i class="pi pi-map-marker mr-2 md:mr-3"></i>{{ order.address }}</p>
+                            <p>
+                                <i class="pi pi-pen-to-square mr-2 md:mr-3"></i>
+                                <span class="italic text-wrap">{{ order.note }}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -114,11 +118,7 @@ onMounted(async () => {
                 v-for="dish in order.dishes"
                 class="border-b border-[var(--p-content-border-color)] py-2.5 grid grid-cols-8 items-center text-left"
             >
-                <img
-                    src="https://placehold.co/150x100.png?text=Dish"
-                    :alt="dish.name"
-                    class="object-cover col-span-2 md:col-span-1 m-auto"
-                />
+                <img :src="dish.image" :alt="dish.name" class="object-cover col-span-2 md:col-span-1 m-auto" />
                 <h4 class="font-bold col-span-5 md:col-span-6 col-start-4 md:col-start-3">{{ dish.name }}</h4>
             </div>
         </div>

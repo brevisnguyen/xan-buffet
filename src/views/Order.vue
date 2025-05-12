@@ -237,7 +237,7 @@ const onOrderSubmit = async () => {
             <StepPanels>
                 <StepPanel v-slot="{ activateCallback }" :value="1">
                     <div class="flex flex-col gap-2 mx-auto">
-                        <Message size="small" severity="info" closable>
+                        <Message severity="info" closable>
                             Quý khách vui lòng chọn 6 món, mỗi suất gồm 1 hộp cơm, 1 hộp đồ ăn, canh và dụng cụ ăn uống.
                             Nếu có yêu cầu đặc biệt, vui lòng ghi chú trong phần ghi chú.
                         </Message>
@@ -259,7 +259,6 @@ const onOrderSubmit = async () => {
                                         <Button
                                             :variant="dish.selected ? '' : 'outlined'"
                                             :severity="dish.selected ? 'primary' : ''"
-                                            size="small"
                                             class="w-full"
                                             @click="onSelectDish(dish)"
                                         >
@@ -277,7 +276,9 @@ const onOrderSubmit = async () => {
                         <div class="flex flex-col gap-4 w-full md:max-w-xl mx-auto">
                             <Message size="small" severity="error" v-if="error"> {{ error }} </Message>
                             <div class="flex flex-col gap-2">
-                                <label for="name">Họ và tên&nbsp;<span class="italic text-xs">(bắt buộc)</span></label>
+                                <label for="name" class="font-semibold">
+                                    Họ và tên&nbsp;<span class="italic text-sm">(bắt buộc)</span>
+                                </label>
                                 <InputText
                                     id="name"
                                     v-model="order.name"
@@ -286,7 +287,9 @@ const onOrderSubmit = async () => {
                                 />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="phone">SĐT&nbsp;<span class="italic text-xs">(bắt buộc)</span></label>
+                                <label for="phone" class="font-semibold">
+                                    SĐT&nbsp;<span class="italic text-sm">(bắt buộc)</span>
+                                </label>
                                 <InputText
                                     id="phone"
                                     v-model="order.phone"
@@ -295,11 +298,13 @@ const onOrderSubmit = async () => {
                                 />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="address">Địa chỉ&nbsp;<span class="italic text-xs">(bắt buộc)</span></label>
+                                <label for="address" class="font-semibold">
+                                    Địa chỉ&nbsp;<span class="italic text-sm">(bắt buộc)</span>
+                                </label>
                                 <InputText id="name" v-model="order.address" placeholder="Địa chỉ nhận hàng" />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="note">Ghi chú</label>
+                                <label for="note" class="font-semibold">Ghi chú</label>
                                 <Textarea name="note" v-model="order.note" rows="3" />
                             </div>
                         </div>
@@ -307,7 +312,7 @@ const onOrderSubmit = async () => {
                 </StepPanel>
                 <StepPanel v-slot="{ activateCallback }" :value="3">
                     <div class="flex flex-col gap-2 mx-auto">
-                        <Message size="small" severity="info" closable>
+                        <Message severity="info" closable>
                             Một bước nữa thôi, mời quý khách xem lại thông tin đơn hàng và ấn xác nhận.
                         </Message>
                         <div class="text-center my-2 md:my-4 text-xl font-semibold">Thông tin đơn hàng</div>
@@ -315,10 +320,10 @@ const onOrderSubmit = async () => {
                             <div
                                 class="flex border border-[var(--p-content-border-color)] rounded-md bg-[var(--p-content-background)]"
                             >
-                                <div class="p-2 w-6/12 text-sm md:text-base">
+                                <div class="p-2 w-6/12 md:text-base">
                                     <div class="flex flex-col gap-2">
                                         <p class="font-semibold">Đơn hàng</p>
-                                        <div class="grid grid-cols-2 gap-1 text-xs md:text-sm items-center">
+                                        <div class="grid grid-cols-2 gap-1 items-center">
                                             <p>Order #:</p>
                                             <div class="flex items-center justify-between md:justify-start">
                                                 <p>{{ order.id }}</p>
@@ -340,24 +345,15 @@ const onOrderSubmit = async () => {
                                     </div>
                                 </div>
                                 <Divider layout="vertical" />
-                                <div class="p-2 w-6/12 text-sm md:text-base">
+                                <div class="p-2 w-6/12 md:text-base">
                                     <div class="flex flex-col gap-1 md:gap-2">
                                         <p class="font-semibold">Người nhận</p>
-                                        <div class="flex flex-col text-sm gap-1 md:gap-2">
+                                        <div class="flex flex-col gap-1 md:gap-2">
+                                            <p><i class="pi pi-user mr-1 md:mr-3"></i>{{ order.name }}</p>
+                                            <p><i class="pi pi-phone mr-1 md:mr-3"></i>{{ order.phone }}</p>
+                                            <p><i class="pi pi-map-marker mr-1 md:mr-3"></i>{{ order.address }}</p>
                                             <p>
-                                                <i class="pi pi-user text-xs md:text-sm mr-1 md:mr-3"></i
-                                                >{{ order.name }}
-                                            </p>
-                                            <p>
-                                                <i class="pi pi-phone text-xs md:text-sm mr-1 md:mr-3"></i
-                                                >{{ order.phone }}
-                                            </p>
-                                            <p>
-                                                <i class="pi pi-map-marker text-xs md:text-sm mr-1 md:mr-3"></i
-                                                >{{ order.address }}
-                                            </p>
-                                            <p>
-                                                <i class="pi pi-pen-to-square text-xs md:text-sm mr-1 md:mr-3"></i>
+                                                <i class="pi pi-pen-to-square mr-1 md:mr-3"></i>
                                                 {{ order.note }}
                                             </p>
                                         </div>
@@ -365,7 +361,7 @@ const onOrderSubmit = async () => {
                                 </div>
                             </div>
                             <div class="mt-3 flex flex-col">
-                                <h4 class="font-semibold text-sm md:text-base mb-3">Món ăn</h4>
+                                <h4 class="font-semibold md:text-base mb-3">Món ăn</h4>
                                 <div
                                     v-for="dish in order.dishes"
                                     class="border-b border-[var(--p-content-border-color)] py-2 flex gap-x-3 md:gap-x-6"
@@ -420,7 +416,6 @@ const onOrderSubmit = async () => {
                 severity="secondary"
                 label="Quay lại"
                 icon="pi pi-arrow-left"
-                size="small"
                 @click="activateCallback(activeStep - 1)"
             />
             <Button
@@ -428,7 +423,6 @@ const onOrderSubmit = async () => {
                 :severity="activeStep < 3 ? 'primary' : 'success'"
                 :icon="activeStep < 3 ? 'pi pi-arrow-right' : 'pi pi-check'"
                 iconPos="right"
-                size="small"
                 :disabled="loading"
                 @click="activateCallback(activeStep + 1)"
             />
