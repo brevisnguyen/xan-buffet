@@ -4,9 +4,10 @@ import Header from "./partials/Header.vue";
 import menuService from "@/services/menuService";
 import { createOrder, getOrderStatus } from "@/services/orderService";
 import { useToast } from "primevue/usetoast";
+import MealSet from "./MealSet.vue";
 
 const toast = useToast();
-const menu = ref(null);
+// const menu = ref(null);
 const loading = ref(true);
 const error = ref(null);
 const activeStep = ref(1);
@@ -25,20 +26,20 @@ const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", 
 const todayIndex = new Date().getDay();
 const todayString = days[todayIndex];
 
-onMounted(async () => {
-    try {
-        const data = await menuService.getMenuByDay(todayString);
-        menu.value = data.data;
-        menu.value.dishes = menu.value.dishes.map((dish) => ({
-            ...dish,
-            selected: false,
-        }));
-    } catch (err) {
-        error.value = "Không thể tải thực đơn. Vui lòng thử lại sau." + err;
-    } finally {
-        loading.value = false;
-    }
-});
+// onMounted(async () => {
+//     try {
+//         const data = await menuService.getMenuByDay(todayString);
+//         menu.value = data.data;
+//         menu.value.dishes = menu.value.dishes.map((dish) => ({
+//             ...dish,
+//             selected: false,
+//         }));
+//     } catch (err) {
+//         error.value = "Không thể tải thực đơn. Vui lòng thử lại sau." + err;
+//     } finally {
+//         loading.value = false;
+//     }
+// });
 
 const currTime = () => {
     const date = new Date();
@@ -242,11 +243,8 @@ const onOrderSubmit = async () => {
                             Nếu có yêu cầu đặc biệt, vui lòng ghi chú trong phần ghi chú.
                         </Message>
                         <div class="text-center my-2 md:my-4 text-xl font-semibold">Chọn món</div>
-                        <div v-if="loading">Đang tải dữ liệu thực đơn...</div>
-                        <div v-else-if="error" class="error">
-                            {{ error }}
-                        </div>
-                        <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 md:gap-4">
+                        <MealSet></MealSet>
+                        <!-- <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 md:gap-4">
                             <div v-for="dish in menu.dishes" :key="dish.id">
                                 <Card class="overflow-hidden">
                                     <template #header>
@@ -267,7 +265,7 @@ const onOrderSubmit = async () => {
                                     </template>
                                 </Card>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </StepPanel>
                 <StepPanel v-slot="{ activateCallback }" :value="2">

@@ -32,4 +32,7 @@
     .p-card-body {
         @apply h-full;
     }
+    .p-tablist-active-bar {
+        @apply !hidden;
+    }
 }
