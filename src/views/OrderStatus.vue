@@ -68,7 +68,7 @@ onMounted(async () => {
 <template>
     <Header />
     <div class="mb-4 mt-10 md:mt-14 md:mb-8 px-2.5 md:px-4 w-full md:w-md mx-auto">
-        <h3 class="text-xl font-bold text-center mb-3 md:mb-6">Kiểm tra đơn hàng</h3>
+        <h3 class="text-center text-xl font-bold mb-6">KIỂM TRA ĐƠN HÀNG</h3>
         <InputGroup>
             <InputText v-model="orderId" placeholder="Nhập vào mã đơn hàng của bạn" />
             <Button label="Tìm kiếm" icon="pi pi-search" @click="onSearch"></Button>
@@ -113,14 +113,22 @@ onMounted(async () => {
                     </div>
                 </div>
             </div>
-            <h4 class="font-semibold my-4 md:my-5 text-left">Món ăn</h4>
-            <div
+            <h4 class="font-bold text-xl my-5 text-left">Món ăn</h4>
+            <ul>
+                <li v-for="(dishes, index) in order.dishes" :key="index" class="mb-2">
+                    <span class="font-semibold text-lg">Suất {{ parseInt(index) + 1 }}:&nbsp;</span>
+                    <span>
+                        {{ dishes.map((dish) => dish.name).join(", ") }}
+                    </span>
+                </li>
+            </ul>
+            <!-- <div
                 v-for="dish in order.dishes"
                 class="border-b border-[var(--p-content-border-color)] py-2.5 grid grid-cols-8 items-center text-left"
             >
                 <img :src="dish.image" :alt="dish.name" class="object-cover col-span-2 md:col-span-1 m-auto" />
                 <h4 class="font-bold col-span-5 md:col-span-6 col-start-4 md:col-start-3">{{ dish.name }}</h4>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

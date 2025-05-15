@@ -61,7 +61,7 @@ const isMobile = () => {
             direction="up"
             :buttonProps="{ severity: 'warn', rounded: true }"
             :tooltipOptions="{ position: 'left' }"
-            style="position: fixed; top: calc(50% - 2rem); right: 14px; display: none"
+            style="position: fixed; top: calc(50% - 2rem); right: 14px"
         >
         </SpeedDial>
     </div>

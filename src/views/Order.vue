@@ -1,15 +1,24 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import Header from "./partials/Header.vue";
 import menuService from "@/services/menuService";
-import { createOrder, getOrderStatus } from "@/services/orderService";
+import { createOrder } from "@/services/orderService";
 import { useToast } from "primevue/usetoast";
-import MealSet from "./MealSet.vue";
 
 const toast = useToast();
-// const menu = ref(null);
+
+const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+const todayIndex = new Date().getDay();
+const todayString = days[todayIndex];
+
+const menu = ref(null);
 const loading = ref(true);
 const error = ref(null);
+
+const activeIndex = ref(0);
+const tabs = ref([{ title: "Suất 1", value: 0 }]);
+const dishesByTab = ref({});
+
 const activeStep = ref(1);
 const isOrderConfirmed = ref(false);
 const order = ref({
@@ -22,24 +31,20 @@ const order = ref({
     dishes: [],
 });
 
-const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-const todayIndex = new Date().getDay();
-const todayString = days[todayIndex];
-
-// onMounted(async () => {
-//     try {
-//         const data = await menuService.getMenuByDay(todayString);
-//         menu.value = data.data;
-//         menu.value.dishes = menu.value.dishes.map((dish) => ({
-//             ...dish,
-//             selected: false,
-//         }));
-//     } catch (err) {
-//         error.value = "Không thể tải thực đơn. Vui lòng thử lại sau." + err;
-//     } finally {
-//         loading.value = false;
-//     }
-// });
+onMounted(async () => {
+    try {
+        const data = await menuService.getMenuByDay(todayString);
+        menu.value = data.data;
+        dishesByTab.value[0] = menu.value.dishes.map((dish) => ({
+            ...dish,
+            selected: false,
+        }));
+    } catch (err) {
+        error.value = "Không thể tải thực đơn. Vui lòng thử lại sau." + err;
+    } finally {
+        loading.value = false;
+    }
+});
 
 const currTime = () => {
     const date = new Date();
@@ -64,7 +69,7 @@ const onCopy = (text) => {
         });
     } else {
         const textarea = document.createElement("textarea");
-        textarea.value = orderId;
+        textarea.value = text;
         textarea.setAttribute("readonly", "");
         textarea.style.position = "absolute";
         textarea.style.left = "-9999px";
@@ -82,11 +87,12 @@ const onCopy = (text) => {
 };
 const activateCallback = (step) => {
     if (step === 2) {
-        if (order.value.dishes.length < 3) {
+        const allTabsValid = Object.values(selectedDishesByTab.value).every((dishes) => dishes.length >= 3);
+        if (!allTabsValid) {
             toast.add({
                 severity: "warn",
                 summary: "Chưa chọn đủ món",
-                detail: "Quý khách vui lòng chọn tối thiểu 3 món.",
+                detail: "Mỗi suất cần chọn ít nhất 3 món.",
                 life: 3000,
             });
             return;
@@ -107,31 +113,76 @@ const activateCallback = (step) => {
     }
     activeStep.value = step;
 };
-const onSelectDish = (dish) => {
-    const exists = order.value.dishes.some((d) => d.id === dish.id);
-    if (exists) {
-        order.value.dishes = order.value.dishes.filter((d) => d.id !== dish.id);
+const onAddNewTab = () => {
+    const maxValue = tabs.value.length > 0 ? Math.max(...tabs.value.map((tab) => tab.value)) : null;
+    const newTabIndex = maxValue + 1;
+    tabs.value.push({
+        title: `Suất ${newTabIndex + 1}`,
+        value: newTabIndex,
+    });
+
+    activeIndex.value = newTabIndex;
+
+    if (menu.value.dishes?.length) {
+        dishesByTab.value[newTabIndex] = menu.value.dishes.map((dish) => ({
+            ...dish,
+            selected: false,
+        }));
+    }
+};
+const onRemoveTab = (index) => {
+    if (tabs.value.length <= 1) return;
+
+    const newTabs = tabs.value.filter((tab) => tab.value !== index);
+    tabs.value = newTabs;
+
+    activeIndex.value = tabs.value[0].value;
+
+    delete dishesByTab.value[index];
+};
+const selectedDishesByTab = computed(() => {
+    const result = {};
+    Object.keys(dishesByTab.value).forEach((tabIndex) => {
+        result[tabIndex] = dishesByTab.value[tabIndex].filter((dish) => dish.selected);
+    });
+    return result;
+});
+const onSelectDish = (dish, tabValue) => {
+    const selected = selectedDishesByTab.value[tabValue] || [];
+
+    const index = selected.findIndex((d) => d.id === dish.id);
+
+    if (index > -1) {
+        selected.splice(index, 1);
+        dish.selected = false;
     } else {
-        if (order.value.dishes.length >= 6) {
+        if (selected.length >= 6) {
             toast.add({
-                severity: "error",
-                summary: "Số lượng món vượt quá giới hạn",
-                detail: "Quý khách chỉ được chọn tối đa 6 món. Xin vui lòng bỏ chọn món khác.",
+                severity: "warn",
+                summary: "Giới hạn món",
+                detail: "Mỗi suất chỉ được chọn tối đa 6 món.",
                 life: 3000,
             });
             return;
         }
-        order.value.dishes.push(dish);
+        selected.push(dish);
+        dish.selected = true;
     }
-    dish.selected = !dish.selected;
+
+    selectedDishesByTab.value[tabValue] = [...selected];
 };
 const onOrderSubmit = async () => {
     loading.value = true;
     try {
+        order.value.dishes = tabs.value.map((tab) => {
+            const dishes = selectedDishesByTab.value[tab.value] || [];
+            return dishes.map((dish) => dish.id);
+        });
         const payload = {
             ...order.value,
-            dishes: order.value.dishes.map((d) => d.id),
+            dishes: order.value.dishes,
         };
+        console.log("Submit payload", payload);
         const response = await createOrder(payload);
         if (response.success) {
             order.value.id = response.orderId;
@@ -161,6 +212,11 @@ const onOrderSubmit = async () => {
         loading.value = false;
         return;
     }
+};
+const getDishNameById = (id) => {
+    console.log(menu.value.dishes);
+    const dish = menu.value.dishes.find((d) => d.id === id);
+    return dish ? dish.name : `#${id}`;
 };
 </script>
 
@@ -242,35 +298,65 @@ const onOrderSubmit = async () => {
                             Quý khách vui lòng chọn 6 món, mỗi suất gồm 1 hộp cơm, 1 hộp đồ ăn, canh và dụng cụ ăn uống.
                             Nếu có yêu cầu đặc biệt, vui lòng ghi chú trong phần ghi chú.
                         </Message>
-                        <div class="text-center my-2 md:my-4 text-xl font-semibold">Chọn món</div>
-                        <MealSet></MealSet>
-                        <!-- <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 md:gap-4">
-                            <div v-for="dish in menu.dishes" :key="dish.id">
-                                <Card class="overflow-hidden">
-                                    <template #header>
-                                        <img :src="dish.image" />
-                                    </template>
-                                    <template #title>
-                                        <div class="min-h-20 text-lg">{{ dish.name }}</div>
-                                    </template>
-                                    <template #footer>
-                                        <Button
-                                            :variant="dish.selected ? '' : 'outlined'"
-                                            :severity="dish.selected ? 'primary' : ''"
-                                            class="w-full"
-                                            @click="onSelectDish(dish)"
-                                        >
-                                            {{ dish.selected ? "Đã chọn" : "Chọn" }}
-                                        </Button>
-                                    </template>
-                                </Card>
-                            </div>
-                        </div> -->
+                        <div class="text-center my-2 md:my-4 text-xl font-bold">CHỌN MÓN</div>
+                        <Tabs v-model:value="activeIndex" scrollable>
+                            <TabList>
+                                <Tab v-for="tab in tabs" :key="tab.title" :value="tab.value" class="px-2 py-2">
+                                    {{ tab.title }}
+                                    <Button
+                                        v-if="tabs.length > 1"
+                                        icon="pi pi-times"
+                                        variant="text"
+                                        severity="secondary"
+                                        size="small"
+                                        @click.stop="onRemoveTab(tab.value)"
+                                    />
+                                </Tab>
+                                <Button
+                                    class="text-nowrap shrink-0 z-10"
+                                    icon="pi pi-plus"
+                                    variant="text"
+                                    label="Thêm suất"
+                                    @click="onAddNewTab"
+                                />
+                            </TabList>
+                            <TabPanels>
+                                <TabPanel v-for="tab in tabs" :key="tab.value" :value="tab.value">
+                                    <div v-if="loading">Đang tải dữ liệu thực đơn...</div>
+                                    <div v-else-if="error" class="error">{{ error }}</div>
+                                    <div
+                                        v-else
+                                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 my-6"
+                                    >
+                                        <div v-for="dish in dishesByTab[activeIndex]" :key="dish.id">
+                                            <Card class="overflow-hidden">
+                                                <template #header>
+                                                    <img class="w-full h-auto object-center" :src="dish.image" />
+                                                </template>
+                                                <template #title>
+                                                    <div class="min-h-20 text-lg">{{ dish.name }}</div>
+                                                </template>
+                                                <template #footer>
+                                                    <Button
+                                                        :variant="dish.selected ? '' : 'outlined'"
+                                                        :severity="dish.selected ? 'primary' : ''"
+                                                        class="w-full"
+                                                        @click="onSelectDish(dish, tab.value)"
+                                                    >
+                                                        {{ dish.selected ? "Đã chọn" : "Chọn" }}
+                                                    </Button>
+                                                </template>
+                                            </Card>
+                                        </div>
+                                    </div>
+                                </TabPanel>
+                            </TabPanels>
+                        </Tabs>
                     </div>
                 </StepPanel>
                 <StepPanel v-slot="{ activateCallback }" :value="2">
                     <div class="flex flex-col gap-2 mx-auto">
-                        <div class="text-center my-2 md:my-4 text-xl font-semibold">Thông tin giao hàng</div>
+                        <div class="text-center my-2 md:my-4 text-xl font-bold">THÔNG TIN GIAO HÀNG</div>
                         <div class="flex flex-col gap-4 w-full md:max-w-xl mx-auto">
                             <Message size="small" severity="error" v-if="error"> {{ error }} </Message>
                             <div class="flex flex-col gap-2">
@@ -313,7 +399,7 @@ const onOrderSubmit = async () => {
                         <Message severity="info" closable>
                             Một bước nữa thôi, mời quý khách xem lại thông tin đơn hàng và ấn xác nhận.
                         </Message>
-                        <div class="text-center my-2 md:my-4 text-xl font-semibold">Thông tin đơn hàng</div>
+                        <div class="text-center my-2 md:my-4 text-xl font-bold">THÔNG TIN ĐƠN HÀNG</div>
                         <div class="flex flex-col gap-y-1 w-full mx-auto">
                             <div
                                 class="flex border border-[var(--p-content-border-color)] rounded-md bg-[var(--p-content-background)]"
@@ -321,7 +407,7 @@ const onOrderSubmit = async () => {
                                 <div class="p-2 w-6/12 md:text-base">
                                     <div class="flex flex-col gap-2">
                                         <p class="font-semibold">Đơn hàng</p>
-                                        <div class="grid grid-cols-2 gap-1 items-center">
+                                        <div class="grid grid-cols-2 gap-1 items-baseline">
                                             <p>Order #:</p>
                                             <div class="flex items-center justify-between md:justify-start">
                                                 <p>{{ order.id }}</p>
@@ -359,14 +445,15 @@ const onOrderSubmit = async () => {
                                 </div>
                             </div>
                             <div class="mt-3 flex flex-col">
-                                <h4 class="font-semibold md:text-base mb-3">Món ăn</h4>
-                                <div
-                                    v-for="dish in order.dishes"
-                                    class="border-b border-[var(--p-content-border-color)] py-2 flex gap-x-3 md:gap-x-6"
-                                >
-                                    <img :src="dish.image" :alt="dish.name" class="w-44 md:w-40 object-cover" />
-                                    <h4 class="font-bold text-base text-wrap">{{ dish.name }}</h4>
-                                </div>
+                                <h4 class="font-bold text-xl mb-3">Món ăn</h4>
+                                <ul>
+                                    <li v-for="(dishes, index) in selectedDishesByTab" :key="index" class="mb-2">
+                                        <span class="font-semibold text-lg">Suất {{ parseInt(index) + 1 }}:&nbsp;</span>
+                                        <span>
+                                            {{ dishes.map((dish) => dish.name).join(", ") }}
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
