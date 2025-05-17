@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import Header from "./partials/Header.vue";
-import { createOrder, getOrderStatus } from "@/services/orderService";
+import { getOrderStatus } from "@/services/orderService";
 
 const orderId = ref(null);
 const error = ref(null);
@@ -114,21 +114,7 @@ onMounted(async () => {
                 </div>
             </div>
             <h4 class="font-bold text-xl my-5 text-left">Món ăn</h4>
-            <ul>
-                <li v-for="(dishes, index) in order.dishes" :key="index" class="mb-2">
-                    <span class="font-semibold text-lg">Suất {{ parseInt(index) + 1 }}:&nbsp;</span>
-                    <span>
-                        {{ dishes.map((dish) => dish.name).join(", ") }}
-                    </span>
-                </li>
-            </ul>
-            <!-- <div
-                v-for="dish in order.dishes"
-                class="border-b border-[var(--p-content-border-color)] py-2.5 grid grid-cols-8 items-center text-left"
-            >
-                <img :src="dish.image" :alt="dish.name" class="object-cover col-span-2 md:col-span-1 m-auto" />
-                <h4 class="font-bold col-span-5 md:col-span-6 col-start-4 md:col-start-3">{{ dish.name }}</h4>
-            </div> -->
+            <div class="whitespace-pre-line text-left text-lg">{{ order.menu }}</div>
         </div>
     </div>
 </template>
